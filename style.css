@@ -3,19 +3,17 @@
     background-color: gold
 }
 
-.blah {
-    background-color: green;
-    display: block;
-    border: double;
-    padding: 2rem;
-    margin-right: 55%;
-    margin-top: 5;
-}
-
+/* .top-scores {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 6rem;
+} */
 
 .container {
     display: flex;
-    background-color: #000000;
+    /* background-color: #000000; */
+    margin-right: 44%;
+    padding: 2rem;
 }
 
 
