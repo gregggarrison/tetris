@@ -234,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function gameOver() {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            topScores.innerHTML = score
 
             saveScore.value = score
 
