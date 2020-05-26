@@ -1,11 +1,32 @@
 
+
+
+
+
+.saved-container {
+   margin-left: 2rem;
+   margin-right: 2rem;
+   border: thick;
+   align-items: center;
+   padding-right: 2rem;
+   height: 250px;
+   background: white;
+   /* outline: thin; */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    /* border: double; */
+    /* padding-right: 1.4rem; */
+}
+
+
 .start-button {
     background-color: gold
 }
 
-.scores-container {
-    margin-left: 2rem;
-}
+
 
 .saved-scores {
     list-style-type: decimal;
@@ -13,8 +34,10 @@
 .container {
     display: flex;
     /* background-color: #000000; */
-    margin-right: 44%;
-    padding: 2rem;
+    margin-right:33%;
+    justify-content: center;
+    padding: 1rem;
+    background-image: url(https://cdn.wallpapersafari.com/57/55/RTvmOg.jpg);
 }
 
 
@@ -25,6 +48,7 @@
     flex-wrap: wrap;
     background-color:#2f4353;
     background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    outline: solid;
 }
 
 .grid div {
@@ -34,6 +58,8 @@
 
 .tetromino {
     background-color: blue;
+   outline-style: solid;
+   outline-width: thin;
 }
 .mini-grid {
     margin-left: 50px;
@@ -42,10 +68,11 @@
     display: flex;
     flex-wrap: wrap;
     background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
-
+    outline: solid;
 }
 
 .mini-grid div {
     height: 20px;
     width: 20px;
+
 }

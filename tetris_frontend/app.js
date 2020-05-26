@@ -1,28 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    const url = "http://localhost:3000/scores"
 
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div'))
+
     const scoreDisplay = document.querySelector('#score')
     const startButton = document.querySelector('#start-button')
+    const savedScores = document.querySelector('.saved-scores')
+    const saveForm = document.getElementById('save-form')
+    const saveScore = document.getElementById('save-score')
+    const submitButton = document.getElementById('save-submit')
+    
     const width = 10
     let nextRandom = 0
     let timerId
     let score = 0
-    const topScores = document.querySelector('.top-scores')
-    const savedScores = document.querySelector('.saved-scores')
-    const saveForm = document.getElementById('save-form')
-    const saveScore = document.getElementById('save-score')
-
-    const submitButton = document.getElementById('save-submit')
     submitButton.disabled = true;
     saveForm.hidden = true
-
-
-
-    const url = "http://localhost:3000/scores"
-
-
-
 
 
     const colors = [
@@ -244,14 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-    // fetch("http://localhost:3000/scores")
-    //     .then(response => response.json())
-    //     .then(scores => scores.forEach(showScores))
-
-
-
-
     async function showScores() {
 
         let response = await fetch(url);
@@ -270,17 +257,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showScores()
 
-
-
     saveForm.addEventListener("submit", function () {
         const formData = new FormData(saveForm)
         const name = formData.get("save-name")
         const newScore = { name, score }
         console.log("name", name.value)
         console.log("score", score)
-
-
-
+        console.log()
 
         showScores(newScore)
 
