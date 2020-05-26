@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('save-submit')
     submitButton.disabled = true;
     saveForm.hidden = true
-    
+
 
 
     const url = "http://localhost:3000/scores"
@@ -236,13 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
 
             saveScore.value = score
-
-          
             submitButton.disabled = false
-            // endGameAlert()
-
             saveForm.hidden = false;
-
             scoreDisplay.innerHTML = score + "\n GameOver! click submit to save score"
 
             clearInterval(timerId)
@@ -250,28 +245,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    fetch("http://localhost:3000/scores")
-        .then(response => response.json())
-        .then(scores => scores.forEach(showScores))
+    // fetch("http://localhost:3000/scores")
+    //     .then(response => response.json())
+    //     .then(scores => scores.forEach(showScores))
 
-    function showScores(score) {
-        let savedScore = document.createElement('li')
-        savedScore.innerHTML = ` ${score.name}:   ${score.score}`
-        savedScores.append(savedScore)
+
+
+
+    async function showScores() {
+
+        let response = await fetch(url);
+        let scores = await response.json();
+
+        scores = scores.sort(function (a, b) {
+            return b.score - a.score
+        })
+
+        scores.forEach(score => {
+            let savedScore = document.createElement('li')
+            savedScore.innerHTML = ` ${score.name}:   ${score.score}`
+            savedScores.append(savedScore)
+        })
     }
+
+    showScores()
 
 
 
     saveForm.addEventListener("submit", function () {
-        // event.preventDefault()
         const formData = new FormData(saveForm)
         const name = formData.get("save-name")
-        // const score = formData.get("save-score")
         const newScore = { name, score }
         console.log("name", name.value)
         console.log("score", score)
 
-            
+
 
 
         showScores(newScore)
