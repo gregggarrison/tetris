@@ -8,16 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreDisplay = document.querySelector('#score')
     const startButton = document.querySelector('#start-button')
     const savedScores = document.querySelector('.saved-scores')
-    const saveForm = document.getElementById('save-form')
-    const saveScore = document.getElementById('save-score')
-    const submitButton = document.getElementById('save-submit')
+    // const saveForm = document.getElementById('save-form')
+    // const saveScore = document.getElementById('save-score')
+    // const submitButton = document.getElementById('save-submit')
     
     const width = 10
     let nextRandom = 0
     let timerId
     let score = 0
-    submitButton.disabled = true;
-    saveForm.hidden = true
+    // submitButton.disabled = true;
+    // saveForm.hidden = true
 
 
     const colors = [
@@ -96,6 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //assign funtions to keyCodes
     function control(e) {
+        e.preventDefault()
+        console.log(e)
         if (e.keyCode === 37) {
             moveLeft()
         } else if (e.keyCode === 38) {
@@ -200,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timerId = null
         } else {
             draw()
-            timerId = setInterval(moveDown, 1000)
+            timerId = setInterval(moveDown, 500)
             nextRandom = Math.floor(Math.random() * theShapes.length)
             displayShape()
         }
@@ -230,13 +232,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver() {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
 
-            saveScore.value = score
-            submitButton.disabled = false
-            saveForm.hidden = false;
-            scoreDisplay.innerHTML = score + "\n GameOver! click submit to save score"
+            // saveScore.value = score
+            // submitButton.disabled = false
+            // saveForm.hidden = false;
+            scoreDisplay.innerHTML = score 
 
+            const name = prompt(`GameOver! your score was ${score}! Enter name and submit to save!`)
+            console.log(name)
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    score: score
+                })
+            })
             clearInterval(timerId)
+            location.reload()
         }
+        
     }
 
     async function showScores() {
@@ -257,28 +273,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showScores()
 
-    saveForm.addEventListener("submit", function () {
-        const formData = new FormData(saveForm)
-        const name = formData.get("save-name")
-        const newScore = { name, score }
-        console.log("name", name.value)
-        console.log("score", score)
-        console.log()
+    // saveForm.addEventListener("submit", function () {
+    //     const formData = new FormData(saveForm)
+    //     const name = formData.get("save-name")
+    //     const newScore = { name, score }
+    //     console.log("name", name.value)
+    //     console.log("score", score)
+    //     console.log()
 
-        showScores(newScore)
+    //     showScores(newScore)
 
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                score: score
-            })
-        })
-        saveForm.reset()
-    })
+     
+    //     saveForm.reset()
+    // })
 
 
 })

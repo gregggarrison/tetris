@@ -1,5 +1,32 @@
+main {
+    background-image: url(https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg);
+    /* width: 75%; */
+    display: inline-flexbox;
+align-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    
+}
+body{
+    display: flex;
+    /* width: 75%; */
+    justify-content: center;
+   background-image: url(https://www.desktopbackground.org/p/2015/10/19/1028765_super-awesome-wallpapers-android-apps-games-on-brothersoft-com_960x854_h.jpg);
+   background-repeat: no-repeat; 
+   background-size: cover;
+   flex-wrap: wrap;
+    flex-direction: row;
+}
 
 
+#save-form{
+    display: flex;
+    justify-content: flex-start;
+}
 
 
 
@@ -11,6 +38,8 @@
    padding-right: 2rem;
    height: 250px;
    background: white;
+   /* height: auto; */
+
    /* outline: thin; */
 }
 
@@ -34,12 +63,31 @@
 .container {
     display: flex;
     /* background-color: #000000; */
-    margin-right:33%;
+    /* margin-right:33%;*/
+    margin-top: 2%; 
     justify-content: center;
     padding: 1rem;
+    width: fit-content;
     background-image: url(https://cdn.wallpapersafari.com/57/55/RTvmOg.jpg);
 }
 
+.score-container {
+    display: inline-flex;
+    margin-right: 50px;
+    width: 80px;
+    height: 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    outline: solid;
+    font-size: 19pt;
+}
+
+#score {
+    text-align: center;
+}
 
 .grid {
     width: 200px;
@@ -60,6 +108,7 @@
     background-color: blue;
    outline-style: solid;
    outline-width: thin;
+
 }
 .mini-grid {
     margin-left: 50px;
