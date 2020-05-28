@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const plusButton = document.getElementById('plus')
     const minusButton = document.getElementById('minus')
-
+    plusButton.disabled = false
 
     const width = 10
     let nextRandom = 0
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //make the tetromino move down every second
     // timerId = setInterval(moveDown, speed)
-
+    // timerId.disabled = true;
     //assign funtions to keyCodes
     function control(e) {
         e.preventDefault()
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isAtRightEdge) currentPosition += 1
 
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            currentPosition -= 1
+            currentPosition -= 1 
         }
         draw()
     }
@@ -226,14 +226,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (timerId) {
             clearInterval(timerId)
             startButton.innerText = "Start"
-            timerId = null
-           
+            minusButton.hidden = false
+            plusButton.hidden = false
 
+            timerId = null
+            
+            
         } else {
             draw()
             timerId = setInterval(moveDown, speed)
             nextRandom = Math.floor(Math.random() * theShapes.length)
             startButton.innerText = "Pause"
+            minusButton.hidden = true
+            plusButton.hidden = true
             displayShape()
         }
     })
