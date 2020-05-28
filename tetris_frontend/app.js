@@ -54,14 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
         'blue'
     ]
 
-    const lShape = [
+    const jShape = [
         [1, width + 1, width * 2 + 1, 2],
         [width, width + 1, width + 2, width * 2 + 2],
         [1, width + 1, width * 2 + 1, width * 2],
         [width, width * 2, width * 2 + 1, width * 2 + 2]
     ]
+    const lShape = [
+        [0, 1, width + 1, width * 2 +1],
+        [width, width + 1, width + 2, 2],
+        [1, width + 1, width * 2 + 1, width * 2 + 2],
+        [width, 0, 1, 2]
+    ]
 
     const zShape = [
+        [width + 1, width * 2 + 1, width + 2, 2],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+        [width, width * 2, width + 1, 1],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+
+    ]
+
+
+    const sShape = [
         [0, width, width + 1, width * 2 + 1],
         [width + 1, width + 2, width * 2, width * 2 + 1],
         [0, width, width + 1, width * 2 + 1],
@@ -89,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width + 1, width + 2, width + 3]
     ]
 
-    const theShapes = [lShape, zShape, tShape, oShape, iShape]
+    const theShapes = [ jShape, lShape, zShape, sShape, tShape, oShape, iShape ]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -202,11 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //the shapes without rotations
     const upNextShapes = [
-        [1, displayWidth + 1, displayWidth * 2 + 1, 2],  //  lTetro
+        [1, displayWidth + 1, displayWidth * 2 + 1, 2],  //  jTetro
         [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], // zTetro
         [1, displayWidth, displayWidth + 1, displayWidth + 2],   // tTetro
         [0, 1, displayWidth, displayWidth + 1],
-        [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
+        [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
+        [0, 1, displayWidth + 1, displayWidth * 2 + 1],
+        [displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2, 2]
+
     ]
 
     //display the shape in mini-grid
