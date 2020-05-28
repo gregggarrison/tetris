@@ -1,25 +1,32 @@
 main {
-    background-image: url(https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg);
-    /* width: 75%; */
+    background-image: url(https://miro.medium.com/max/1024/1*9WeJrBj6pp-qnGjRGg2NUw.png);
+    background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-049.jpg);
+    background-image: url(https://media.istockphoto.com/photos/abstract-bricks-wall-background-old-stucco-color-light-gray-dirty-picture-id1138050969);
+    background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
     display: inline-flexbox;
-align-content: center;
+    align-content: center;
     flex-wrap: wrap;
     padding: 2rem;
 }
 
+
 h1 {
     text-align: center;
+    font-size: 3em;
     
 }
 body{
     display: flex;
     /* width: 75%; */
     justify-content: center;
-   background-image: url(https://www.desktopbackground.org/p/2015/10/19/1028765_super-awesome-wallpapers-android-apps-games-on-brothersoft-com_960x854_h.jpg);
+    background-image: url(https://cdn5.vectorstock.com/i/1000x1000/14/69/black-abstract-background-brick-wall-texture-vector-7821469.jpg);
+  
+    /* background-image: url(https://www.desktopbackground.org/p/2015/10/19/1028765_super-awesome-wallpapers-android-apps-games-on-brothersoft-com_960x854_h.jpg); */
    background-repeat: no-repeat; 
    background-size: cover;
    flex-wrap: wrap;
     flex-direction: row;
+    padding-top: 3rem;
 }
 
 
@@ -28,7 +35,14 @@ body{
     justify-content: flex-start;
 }
 
-
+.small-button {
+height: 15px;
+width: 15px;
+display: flex;
+justify-content: flex-start;
+padding-top: 5px;
+padding-left: 5px;
+}
 
 .saved-container {
    margin-left: 2rem;
@@ -39,13 +53,15 @@ body{
    height: 250px;
    background: white;
    /* height: auto; */
+   background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
 
    /* outline: thin; */
 }
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-top: 11%;
     /* border: double; */
     /* padding-right: 1.4rem; */
 }
@@ -69,20 +85,44 @@ body{
     padding: 1rem;
     width: fit-content;
     background-image: url(https://cdn.wallpapersafari.com/57/55/RTvmOg.jpg);
+   background-image: url(https://cdn3.vectorstock.com/i/1000x1000/95/67/black-brick-wall-background-in-gradient-vector-23909567.jpg);
+   background-image: url(https://cdn3.vectorstock.com/i/1000x1000/23/52/seamless-texture-vintage-black-brick-wall-vector-21072352.jpg);
 }
 
 .score-container {
-    display: inline-flex;
+    display: flex;
     margin-right: 50px;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
     background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
+    gap: 1rem;
     outline: solid;
     font-size: 19pt;
+}
+
+.level-container {
+    display: flex;
+    /* margin-right: 50px; */
+    width: 100px;
+    height: 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
+    /* gap: 1rem; */
+    outline: solid;
+    font-size: 19pt;
+}
+
+#level{
+    text-align: center;
 }
 
 #score {
@@ -117,6 +157,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    
     outline: solid;
 }
 
@@ -125,3 +166,4 @@ body{
     width: 20px;
 
 }
+  

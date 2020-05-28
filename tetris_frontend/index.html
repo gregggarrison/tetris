@@ -14,26 +14,34 @@
     <main>
         <header>
             <h1>Generic Tetris Game</h1>
-            <button class="start-button" id="start-button">Start/Pause</button>
+            <button class="start-button" id="start-button">Start</button
         </header>
-
-        <br>
-        <br>
 
 
         <!-- <form id="save-form" , class="save-form">
             <input type="text" name="save-name" id="save-name" placeholder="enter name here">
             <input type="hidden" name="save-score" id="save-score">
             <input type="submit" id="save-submit">
-
+            
         </form> -->
 
 
 
         <div class="container">
-            <div class="score-container">
-                <header>Score</header>
-                <span id="score">0</span>
+            <div>
+                <div class="score-container">
+                    <header>Score</header>
+                    <span id="score">0</span>
+                </div>
+
+                <div class="level-container">
+                    <header>Level</header>
+                    <span id="level">0</span>
+                    <div class="small-button">  
+                        <button id="minus">-</button>
+                        <button id="plus">+</button>
+                    </div>
+                </div>
             </div>
 
             <div class="grid">
@@ -268,12 +276,12 @@
                 <div></div>
             </div>
 
-            
+
             <div class="saved-container">
-                <header class="header">Top Scores</header>
+                <header class="header">Top 10 Scores</header>
                 <ul class="saved-scores"> </ul>
             </div>
-            
+
         </div>
         <br>
         <br>

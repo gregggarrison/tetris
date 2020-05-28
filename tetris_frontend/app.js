@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const url = "http://localhost:3000/scores"
 
     const grid = document.querySelector('.grid')
@@ -11,11 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // const saveForm = document.getElementById('save-form')
     // const saveScore = document.getElementById('save-score')
     // const submitButton = document.getElementById('save-submit')
-    
+
+    const plusButton = document.getElementById('plus')
+    const minusButton = document.getElementById('minus')
+
+
     const width = 10
     let nextRandom = 0
     let timerId
     let score = 0
+
+    let speed = 1000
+    const levelDisplay = document.querySelector('#level')
+    let level = levelDisplay.innerHTML
+    console.log(level)
+
+    levelDisplay.innerHTML = 1
+
+    plusButton.addEventListener('click', () => {
+
+        levelDisplay.innerHTML++
+        speed -= 250
+        console.log(speed)
+    })
+
+    minusButton.addEventListener('click', () => {
+        levelDisplay.innerHTML--
+        speed += 250
+        console.log(speed)
+    })
+
+
     // submitButton.disabled = true;
     // saveForm.hidden = true
 
@@ -92,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //make the tetromino move down every second
-    // timerId = setInterval(moveDown, 1000)
+    // timerId = setInterval(moveDown, speed)
 
     //assign funtions to keyCodes
     function control(e) {
@@ -199,11 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.addEventListener('click', () => {
         if (timerId) {
             clearInterval(timerId)
+            startButton.innerText = "Start"
             timerId = null
+           
+
         } else {
             draw()
-            timerId = setInterval(moveDown, 500)
+            timerId = setInterval(moveDown, speed)
             nextRandom = Math.floor(Math.random() * theShapes.length)
+            startButton.innerText = "Pause"
             displayShape()
         }
     })
@@ -213,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9]
 
             if (row.every(index => squares[index].classList.contains('taken'))) {
-                score += 10
+                score += (10 * levelDisplay.innerHTML)
                 console.log("score", score)
                 scoreDisplay.innerHTML = score
                 row.forEach(index => {
@@ -235,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // saveScore.value = score
             // submitButton.disabled = false
             // saveForm.hidden = false;
-            scoreDisplay.innerHTML = score 
+            scoreDisplay.innerHTML = score
 
             const name = prompt(`GameOver! your score was ${score}! Enter name and submit to save!`)
             console.log(name)
@@ -252,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerId)
             location.reload()
         }
-        
+
     }
 
     async function showScores() {
@@ -264,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return b.score - a.score
         })
 
+        scores.splice(10)
         scores.forEach(score => {
             let savedScore = document.createElement('li')
             savedScore.innerHTML = ` ${score.name}:   ${score.score}`
@@ -283,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //     showScores(newScore)
 
-     
+
     //     saveForm.reset()
     // })
 
