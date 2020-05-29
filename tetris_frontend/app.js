@@ -343,6 +343,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // })
 
 
+
+    const flipCard = document.querySelector('.flip-card-inner')
+    // flipCard.addEventListener('click', () => {
+    //     flipCard.classList.toggle('is-flipped')
+
+    // })
+
+    const abort = document.getElementById('toggle-button')
+    const back = document.querySelector('.back-image')
+
+    abort.addEventListener('click', () => {
+        flipCard.classList.toggle('is-flipped')
+    })
+
+    back.addEventListener('click', () => {
+        flipCard.classList.toggle('is-flipped')
+    })
+
+
+
+
+
+
+
 })
 
 
