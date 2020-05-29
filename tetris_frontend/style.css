@@ -112,10 +112,15 @@ body{
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+#toggle-button {
+    background-color: red;
+}
+
 
 
 .saved-scores {
     list-style-type: decimal;
+    text-align: right;
 }
 .container {
     display: flex;
