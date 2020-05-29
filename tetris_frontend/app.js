@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const url = "http://localhost:3000/scores"
@@ -54,29 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
         'blue'
     ]
 
-    const jShape = [
+    const lShape = [
         [1, width + 1, width * 2 + 1, 2],
         [width, width + 1, width + 2, width * 2 + 2],
         [1, width + 1, width * 2 + 1, width * 2],
         [width, width * 2, width * 2 + 1, width * 2 + 2]
     ]
-    const lShape = [
-        [0, 1, width + 1, width * 2 +1],
-        [width, width + 1, width + 2, 2],
-        [1, width + 1, width * 2 + 1, width * 2 + 2],
-        [width, 0, 1, 2]
-    ]
+
+ 
 
     const zShape = [
-        [width + 1, width * 2 + 1, width + 2, 2],
-        [width, width + 1, width * 2 + 1, width * 2 + 2],
-        [width, width * 2, width + 1, 1],
-        [width, width + 1, width * 2 + 1, width * 2 + 2],
-
-    ]
-
-
-    const sShape = [
         [0, width, width + 1, width * 2 + 1],
         [width + 1, width + 2, width * 2, width * 2 + 1],
         [0, width, width + 1, width * 2 + 1],
@@ -104,7 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width + 1, width + 2, width + 3]
     ]
 
-    const theShapes = [ jShape, lShape, zShape, sShape, tShape, oShape, iShape ]
+    const jShape = [
+        [0, 1, width + 1, width * 2 +1],
+        [width, width + 1, width + 2, 2],
+        [1, width + 1, width * 2 + 1, width * 2 + 2],
+        [width, 0, 1, 2]
+    ]
+
+    const sShape = [
+        [2, width + 1, width * 2 + 1, width + 2],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+        [width, width * 2, width + 1, 1],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+    ]
+
+    const theShapes = [lShape, zShape, tShape, oShape, iShape, jShape, sShape]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -217,14 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //the shapes without rotations
     const upNextShapes = [
-        [1, displayWidth + 1, displayWidth * 2 + 1, 2],  //  jTetro
+        [1, displayWidth + 1, displayWidth * 2 + 1, 2],  //  lTetro
         [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], // zTetro
         [1, displayWidth, displayWidth + 1, displayWidth + 2],   // tTetro
         [0, 1, displayWidth, displayWidth + 1],
         [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
         [0, 1, displayWidth + 1, displayWidth * 2 + 1],
-        [displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2, 2]
-
+        [2, displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2]
     ]
 
     //display the shape in mini-grid
@@ -344,3 +345,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log('it worked')
+// const url = "http://localhost:3000/scores"
+
+// async function showScores() {
+
+//     let response = await fetch(url);
+//     let scores = await response.json();
+
+
+//    scores = scores.sort(function(a, b){
+//       return b.score - a.score
+//     console.log("scores",scores)
+//     })
+
+//     console.log("data", scores)
+
+//     // generateTableHead()
+//     // generateTable()
+
+// scores.forEach(score => {
+//     const container = document.querySelector('#container')
+//     const h1 = document.createElement('h1')
+//     h1.classList.add("score")
+//     h1.innerHTML = `${score.name}:  ${score.score}`
+//     container.appendChild(h1)
+// })
+
+
+
+    // function generateTableHead(table, data) {
+    //     let thead = table.createTHead();
+    //     let row = thead.insertRow();
+    //     for (let key of data) {
+    //         let th = document.createElement("th");
+    //         let text = document.createTextNode(key);
+    //         th.appendChild(text);
+    //         row.appendChild(th);
+    //     }
+    // }
+    
+    // function generateTable(table, data) {
+    //     for (let element of data) {
+    //         let row = table.insertRow();
+    //         for (key in element) {
+    //             let cell = row.insertCell();
+    //             let text = document.createTextNode(element[key]);
+    //             cell.appendChild(text);
+    //         }
+    //     }
+    // }
+
+
+
+
+
+    // let table = document.querySelector("table");
+    // let data = Object.keys(scores[0]);
+    // generateTableHead(table, data);
+    // generateTable(table, scores);
+
+
+// }
+
+// showScores()
