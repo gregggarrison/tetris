@@ -2,11 +2,14 @@ main {
     background-image: url(https://miro.medium.com/max/1024/1*9WeJrBj6pp-qnGjRGg2NUw.png);
     background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-049.jpg);
     background-image: url(https://media.istockphoto.com/photos/abstract-bricks-wall-background-old-stucco-color-light-gray-dirty-picture-id1138050969);
+    background-image: url(https://s3.amazonaws.com/mk-website-media/wp-content/uploads/2018/10/18235518/Wallpaper-Kemra-Whitewashed-Bricks-1-1100x1318.jpg);
+    background-image: url(https://www.worldofwallpaper.com/media/catalog/product/cache/a13f2d0ee5dc2e18e92742d73c48d042/a/r/art331_diamond_brick_glitter_wallpaper_grey_ae1.jpg);
     background-image: url(https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-043.jpg);
+
     display: inline-flexbox;
     align-content: center;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 
@@ -18,12 +21,17 @@ h1 {
 body{
     display: flex;
     justify-content: center;
-    background-image: url(https://cdn5.vectorstock.com/i/1000x1000/14/69/black-abstract-background-brick-wall-texture-vector-7821469.jpg);
     background-repeat: no-repeat; 
     background-size: cover;
     flex-wrap: wrap;
     flex-direction: row;
-    padding-top: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    background-image: url(https://ph-live-01.slatic.net/p/755415ca02cf738420766952015fd833.jpg);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQnC1ZUAnLTZGQIJPRT-dv1nrb_iWVrigi9a9tDzvO15Al9OaMs&usqp=CAU);
+    background-image: url(https://cdn5.vectorstock.com/i/1000x1000/14/69/black-abstract-background-brick-wall-texture-vector-7821469.jpg);
+
+    
 }
 
 
@@ -83,8 +91,11 @@ body{
 
 .header {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: center;
     padding-top: 11%;
+    padding-left: 7%;
+    font-display: bold;
     /* border: double; */
     /* padding-right: 1.4rem; */
 }
@@ -114,6 +125,8 @@ body{
     background-image: url(https://cdn.wallpapersafari.com/57/55/RTvmOg.jpg);
     background-image: url(https://cdn3.vectorstock.com/i/1000x1000/95/67/black-brick-wall-background-in-gradient-vector-23909567.jpg);
     background-image: url(https://cdn3.vectorstock.com/i/1000x1000/23/52/seamless-texture-vintage-black-brick-wall-vector-21072352.jpg);
+    background-image: url(https://ae01.alicdn.com/kf/HTB1xlmWoMvD8KJjy0Flq6ygBFXai/Antique-Brick-Modern-Chinese-Restaurant-Clothing-wallpaper-Retro-Brick-Green-Brick-Wallpaper-Wallpaper-for-walls-SA.jpg_q50.jpg);
+
 }
 
 .score-container {
@@ -132,15 +145,15 @@ body{
     font-size: 19pt;
     font-family: "Comic Sans MS", cursive, sans-serif;
     margin-bottom: 5px;
-font-size: 19pt;
-letter-spacing: 0.8px;
-word-spacing: 0px;
-color: #000000;
-font-weight: 700;
-text-decoration: none;
-font-style: normal;
-font-variant: small-caps;
-text-transform: capitalize;
+    font-size: 19pt;
+    letter-spacing: 0.8px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: capitalize;
 }
 
 .level-container {
@@ -148,7 +161,7 @@ text-transform: capitalize;
     /* margin-right: 50px; */
     width: 100px;
     height: 100px;
-   flex-direction: row;
+    flex-direction: row;
     justify-content: space-evenly;
     align-content: center; 
     flex-wrap: wrap;
