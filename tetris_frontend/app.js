@@ -9,43 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreDisplay = document.querySelector('#score')
     const startButton = document.querySelector('#start-button')
     const savedScores = document.querySelector('.saved-scores')
-    // const saveForm = document.getElementById('save-form')
-    // const saveScore = document.getElementById('save-score')
-    // const submitButton = document.getElementById('save-submit')
-
+    const levelDisplay = document.querySelector('#level')
     const plusButton = document.getElementById('plus')
     const minusButton = document.getElementById('minus')
-    plusButton.disabled = false
+    const flipCard = document.querySelector('.flip-card-inner')
+    const abort = document.getElementById('toggle-button')
+    const back = document.querySelector('.back-image')
 
     const width = 10
     let nextRandom = 0
     let timerId
     let score = 0
-
     let speed = 1000
-    const levelDisplay = document.querySelector('#level')
-    let level = levelDisplay.innerHTML
-    console.log(level)
-
-    levelDisplay.innerHTML = 1
-
-    plusButton.addEventListener('click', () => {
-
-        levelDisplay.innerHTML++
-        speed -= 250
-        console.log(speed)
-    })
-
-    minusButton.addEventListener('click', () => {
-        levelDisplay.innerHTML--
-        speed += 250
-        console.log(speed)
-    })
-
-
-    // submitButton.disabled = true;
-    // saveForm.hidden = true
-
 
     const colors = [
         'orange',
@@ -61,8 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width + 1, width * 2 + 1, width * 2],
         [width, width * 2, width * 2 + 1, width * 2 + 2]
     ]
-
- 
 
     const zShape = [
         [0, width, width + 1, width * 2 + 1],
@@ -93,32 +66,54 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     const jShape = [
-        [0, 1, width + 1, width * 2 +1],
+        [0, 1, width + 1, width * 2 + 1],
         [width, width + 1, width + 2, 2],
         [1, width + 1, width * 2 + 1, width * 2 + 2],
         [width, 0, 1, 2]
     ]
-
+    
     const sShape = [
         [2, width + 1, width * 2 + 1, width + 2],
         [width, width + 1, width * 2 + 1, width * 2 + 2],
         [width, width * 2, width + 1, 1],
         [width, width + 1, width * 2 + 1, width * 2 + 2],
     ]
-
+    
     const theShapes = [lShape, zShape, tShape, oShape, iShape, jShape, sShape]
-
+    
     let currentPosition = 4
     let currentRotation = 0
-
-    //randomly select a Shape and its first rotation
+    
     let random = Math.floor(Math.random() * theShapes.length)
-    console.log(random)
-
+    
     let current = theShapes[random][currentRotation]
+    levelDisplay.innerHTML = 1
+    
+    const displaySquares = document.querySelectorAll('.mini-grid div')
+    const displayWidth = 4
+    let displayIndex = 0
+
+
+    abort.addEventListener('click', () => {
+        flipCard.classList.toggle('is-flipped')
+    })
+
+    back.addEventListener('click', () => {
+        flipCard.classList.toggle('is-flipped')
+    })
+
+    plusButton.addEventListener('click', () => {
+        levelDisplay.innerHTML++
+        speed -= 250
+    })
+
+    minusButton.addEventListener('click', () => {
+        levelDisplay.innerHTML--
+        speed += 250
+    })
+
     draw()
 
-    //draw the tetromino
     function draw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.add('tetromino')
@@ -126,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    //undraw the tetromino
     function undraw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.remove('tetromino')
@@ -134,13 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    //make the tetromino move down every second
-    // timerId = setInterval(moveDown, speed)
-    // timerId.disabled = true;
-    //assign funtions to keyCodes
     function control(e) {
         e.preventDefault()
-        console.log(e)
         if (e.keyCode === 37) {
             moveLeft()
         } else if (e.keyCode === 38) {
@@ -164,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function freeze() {
         if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
             current.forEach(index => squares[currentPosition + index].classList.add('taken'))
-            //start a new teromino falling
             random = nextRandom
             nextRandom = Math.floor(Math.random() * theShapes.length)
             current = theShapes[random][currentRotation]
@@ -176,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //move left until it hits the wall
     function moveLeft() {
         undraw()
         const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
@@ -189,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         draw()
     }
 
-    //move right until it hits the wall
     function moveRight() {
         undraw()
         const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
@@ -197,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isAtRightEdge) currentPosition += 1
 
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            currentPosition -= 1 
+            currentPosition -= 1
         }
         draw()
     }
@@ -205,32 +191,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function rotate() {
         undraw()
         currentRotation++
-        if (currentRotation === current.length) { //if current rotation gets to 4, make it go back to 0
+        if (currentRotation === current.length) {
             currentRotation = 0
         }
         current = theShapes[random][currentRotation]
         draw()
     }
 
-    //show up-next tetromino in mini-grid display
-    const displaySquares = document.querySelectorAll('.mini-grid div')
-    const displayWidth = 4
-    let displayIndex = 0
-
-    //the shapes without rotations
     const upNextShapes = [
-        [1, displayWidth + 1, displayWidth * 2 + 1, 2],  //  lTetro
-        [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], // zTetro
-        [1, displayWidth, displayWidth + 1, displayWidth + 2],   // tTetro
+        [1, displayWidth + 1, displayWidth * 2 + 1, 2],
+        [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
+        [1, displayWidth, displayWidth + 1, displayWidth + 2],
         [0, 1, displayWidth, displayWidth + 1],
         [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
         [0, 1, displayWidth + 1, displayWidth * 2 + 1],
         [2, displayWidth + 1, displayWidth * 2 + 1, displayWidth + 2]
     ]
 
-    //display the shape in mini-grid
     function displayShape() {
-        //remove any trace of a tetromino form the entire grid
         displaySquares.forEach(square => {
             square.classList.remove('tetromino')
             square.style.backgroundColor = ""
@@ -247,10 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
             startButton.innerText = "Start"
             minusButton.hidden = false
             plusButton.hidden = false
-
             timerId = null
-            
-            
+
         } else {
             draw()
             timerId = setInterval(moveDown, speed)
@@ -268,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (row.every(index => squares[index].classList.contains('taken'))) {
                 score += (10 * levelDisplay.innerHTML)
-                console.log("score", score)
                 scoreDisplay.innerHTML = score
                 row.forEach(index => {
                     squares[index].classList.remove('taken')
@@ -285,14 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function gameOver() {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-
-            // saveScore.value = score
-            // submitButton.disabled = false
-            // saveForm.hidden = false;
             scoreDisplay.innerHTML = score
-
             const name = prompt(`GameOver! your score was ${score}! Enter name and submit to save!`)
-            console.log(name)
+
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -306,14 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerId)
             location.reload()
         }
-
     }
 
     async function showScores() {
-
         let response = await fetch(url);
         let scores = await response.json();
-
         scores = scores.sort(function (a, b) {
             return b.score - a.score
         })
@@ -327,125 +294,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     showScores()
-
-    // saveForm.addEventListener("submit", function () {
-    //     const formData = new FormData(saveForm)
-    //     const name = formData.get("save-name")
-    //     const newScore = { name, score }
-    //     console.log("name", name.value)
-    //     console.log("score", score)
-    //     console.log()
-
-    //     showScores(newScore)
-
-
-    //     saveForm.reset()
-    // })
-
-
-
-    const flipCard = document.querySelector('.flip-card-inner')
-    // flipCard.addEventListener('click', () => {
-    //     flipCard.classList.toggle('is-flipped')
-
-    // })
-
-    const abort = document.getElementById('toggle-button')
-    const back = document.querySelector('.back-image')
-
-    abort.addEventListener('click', () => {
-        flipCard.classList.toggle('is-flipped')
-    })
-
-    back.addEventListener('click', () => {
-        flipCard.classList.toggle('is-flipped')
-    })
-
-
-
-
-
-
-
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log('it worked')
-// const url = "http://localhost:3000/scores"
-
-// async function showScores() {
-
-//     let response = await fetch(url);
-//     let scores = await response.json();
-
-
-//    scores = scores.sort(function(a, b){
-//       return b.score - a.score
-//     console.log("scores",scores)
-//     })
-
-//     console.log("data", scores)
-
-//     // generateTableHead()
-//     // generateTable()
-
-// scores.forEach(score => {
-//     const container = document.querySelector('#container')
-//     const h1 = document.createElement('h1')
-//     h1.classList.add("score")
-//     h1.innerHTML = `${score.name}:  ${score.score}`
-//     container.appendChild(h1)
-// })
-
-
-
-    // function generateTableHead(table, data) {
-    //     let thead = table.createTHead();
-    //     let row = thead.insertRow();
-    //     for (let key of data) {
-    //         let th = document.createElement("th");
-    //         let text = document.createTextNode(key);
-    //         th.appendChild(text);
-    //         row.appendChild(th);
-    //     }
-    // }
-    
-    // function generateTable(table, data) {
-    //     for (let element of data) {
-    //         let row = table.insertRow();
-    //         for (key in element) {
-    //             let cell = row.insertCell();
-    //             let text = document.createTextNode(element[key]);
-    //             cell.appendChild(text);
-    //         }
-    //     }
-    // }
-
-
-
-
-
-    // let table = document.querySelector("table");
-    // let data = Object.keys(scores[0]);
-    // generateTableHead(table, data);
-    // generateTable(table, scores);
-
-
-// }
-
-// showScores()
