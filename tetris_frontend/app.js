@@ -71,24 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width + 1, width * 2 + 1, width * 2 + 2],
         [width, 0, 1, 2]
     ]
-    
+
     const sShape = [
         [2, width + 1, width * 2 + 1, width + 2],
         [width, width + 1, width * 2 + 1, width * 2 + 2],
         [width, width * 2, width + 1, 1],
         [width, width + 1, width * 2 + 1, width * 2 + 2],
     ]
-    
+
     const theShapes = [lShape, zShape, tShape, oShape, iShape, jShape, sShape]
-    
+
     let currentPosition = 4
     let currentRotation = 0
-    
+
     let random = Math.floor(Math.random() * theShapes.length)
-    
+
     let current = theShapes[random][currentRotation]
     levelDisplay.innerHTML = 1
-    
+
     const displaySquares = document.querySelectorAll('.mini-grid div')
     const displayWidth = 4
     let displayIndex = 0
@@ -284,12 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
         scores = scores.sort(function (a, b) {
             return b.score - a.score
         })
-
+        console.log("scores",scores)
         scores.splice(10)
         scores.forEach(score => {
             let savedScore = document.createElement('li')
-            savedScore.innerHTML = ` ${score.name}:   ${score.score}`
+            savedScore.innerHTML = ` ${score.user.user_name}:   ${score.score}`
             savedScores.append(savedScore)
+
+
+
         })
     }
 
