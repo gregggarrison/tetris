@@ -18,8 +18,8 @@ Minor bugs/issues.
 
 I never disabled the event listeners that move the shape when paused or at the start of the game.  i.e. one could technically play at a stand still without the gravity effect
 I had issues accounting for unoccupied/occupied space during a shape rotation
-Obviously my CSS is a nightmare
-Amongst several others... but the above mentioned are the ones that bothered me the most
+Obviously my CSS is a nightmare...but a work in progress.  This was my favorite project so far!
+
 
 
 Gregg Garrison
